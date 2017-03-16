@@ -1,0 +1,17 @@
+{
+  "Collection": [
+	{
+	  "name": "Mike",
+	  "age": 38
+	},
+	{
+	  "name": "Alex",
+	  "age": 30
+	},
+	{
+	  "name": "Olga",
+	  "age": 35
+	}
+  ],
+  "total": 3
+}

@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css" class="css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Alex Bogdanovsky<small>JS lesson 1</small></h1>
+			</div>
+		</div>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>Validate number</h1>
+				<form>
+					<div id="state-wrapper" class="form-group">
+						<label for="validate_number">Any valid number</label>
+						<input type="text" class="form-control" id="validate_number" placeholder="Input number">
+					</div>
+				</form>
+				<p>
+					<a class="btn btn-primary btn-lg action-button" href="#" role="button">Validate</a>
+				</p>
+				<p class="connected">This paragraph is connected</p>
+				<p class="connected">This paragraph is connected</p>
+				<p class="connected">This paragraph is connected</p>
+				<p>
+					<button type="button" class="btn btn-default fireEvent" data-dismiss="modal">Fire event</button>
+				</p>
+				<p>
+					<button type="button" class="btn btn-default showData" data-dismiss="modal">Show me some data</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Error</h4>
+					</div>
+					<div class="modal-body">
+						<p>Only valid numaber, for example: 1 or 1234 or 345.34</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModalData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabelData">Some Data</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>name</th>
+									<th>age</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="app.js"></script>
+
+	</body>
+</html>
