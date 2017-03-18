@@ -44,6 +44,56 @@ function getAndShowData(){
 	});
 };
 
+function _animateTheBrick(){
+	console.log('hoho the brick gonna move ');
+	var brick = $('.brick');
+	var parent = brick.parents('.container');
+	var animationWidth = parent.width();
+	var animateTo = '';
+
+	if(brick.css('margin-left') != '0px'){
+		console.log('i am not in default position');
+		animateTo = '-='+ animationWidth;
+	} else {
+		console.log('i am in default position');
+		animateTo = '+='+ animationWidth;
+	}
+
+	console.log(animationWidth);
+
+	brick.animate({
+		marginLeft: animateTo
+	}, 3000, function(){
+		console.log('animation done');
+	});
+};
+
+function _openBrickModal(){
+	console.log('i need to open modal here');
+	var modal = $('#myBrickModal');
+	var actionButton = $('#btn-move-brick');
+
+	modal.modal('show');
+
+	modal.one('hidden.bs.modal', function (e) {
+		console.log('global hidden.bs.modal worked');
+		modal.off();
+		actionButton.off();
+	});
+
+	actionButton.one('click', function(ev){
+		ev.preventDefault();
+
+		modal.one('hidden.bs.modal', function (e) {
+			console.log('hidden.bs.modal worked after i decided to move the brick');
+			_animateTheBrick();
+		});
+
+		console.log('i am about to close the modal');
+		modal.modal('hide');
+	});
+};
+
 $(document).ready(function(){
 	$( ".action-button" ).click(_when_somebody_click_the_validate_button);
 	$( ".action-button" ).on('alexCustom', _when_somebody_click_the_validate_button);
@@ -76,6 +126,11 @@ $(document).ready(function(){
 	$('.showData').on('click', function(ev){
 		ev.preventDefault();
 		getAndShowData();
+	});
+
+	$('.brick').on('click', function(ev){
+		ev.preventDefault();
+		_openBrickModal();
 	});
 
 });
