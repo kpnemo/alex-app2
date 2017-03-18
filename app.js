@@ -128,9 +128,13 @@ $(document).ready(function(){
 		getAndShowData();
 	});
 
-	$('.brick').on('click', function(ev){
-		ev.preventDefault();
-		_openBrickModal();
+	$('div').on('click', function(ev){
+		if($(this).hasClass('brick')){
+			ev.preventDefault();
+			_openBrickModal();
+		} else {
+			return true;
+		}
 	});
 
 });
