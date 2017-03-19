@@ -1,0 +1,24 @@
+#map{
+    margin-left: 50px;
+}
+
+.row{
+    clear: left;
+    margin-bottom: 2px;
+}
+
+.col{
+    display:inline-block;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+}
+
+.iks{
+    background-color: black;
+
+}
+
+.igul{
+    background-color: red;
+}
