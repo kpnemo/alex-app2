@@ -44,6 +44,26 @@ function getAndShowData(){
 	});
 };
 
+
+function getYouTubeId() {
+    var videotag = $('#YouTubeID');
+    var videoID = videotag.val();
+    console.log('my video ID' + videoID);
+
+    $('#ytPlayer').attr('src', '//www.youtube.com/embed/' + videoID);
+    	$('#myModalYoutube').modal('show');
+
+
+	$("#myModalYoutube").on('hidden.bs.modal', function (e) {
+			console.log('Im closed');
+			$('#ytPlayer').attr('src', '');
+
+		});
+
+};
+
+
+
 function _animateTheBrick(){
 	console.log('hoho the brick gonna move ');
 	var brick = $('.brick');
@@ -93,6 +113,13 @@ function _openBrickModal(){
 		modal.modal('hide');
 	});
 };
+
+
+$(document).ready(function(){
+	$("#trigger").on('click', getYouTubeId);
+
+});
+
 
 $(document).ready(function(){
 	$( ".action-button" ).click(_when_somebody_click_the_validate_button);

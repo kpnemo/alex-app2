@@ -31,8 +31,20 @@
 				<p>
 					<button type="button" class="btn btn-default showData" data-dismiss="modal">Show me some data</button>
 				</p>
+					<form>
+						<div>
+							<label for="mymodalyoutube"> put YouTube Id:</label>
+							<input type="text" id="YouTubeID" placeholder="Put YouTube ID here">
+						</div>
+					</form>
+				<p>
+				</p>
+				<p>
+					<button type="button" class="btn btn-primary" id="trigger" data-dismiss="modal">Show YouTube video</button>
+				</p>
 			</div>
 		</div>
+
 
 
 		<div class="container last">
@@ -86,6 +98,22 @@
 			</div>
 		</div>
 
+		<div class="modal fade" id="myModalYoutube" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabelyoutube">Error</h4>
+					</div>
+					<div class="modal-body">
+						<iframe width="560" height="315" id="ytPlayer" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- Modal -->
 		<div class="modal fade" id="myBrickModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
