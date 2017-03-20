@@ -5,6 +5,7 @@
 .row{
     clear: left;
     margin-bottom: 2px;
+
 }
 
 .col{
@@ -16,9 +17,8 @@
 
 .X{
     background-color: black;
-
 }
 
-.O{
+.O {
     background-color: red;
 }
