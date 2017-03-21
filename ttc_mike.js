@@ -108,7 +108,11 @@ function init(){
 	$('.cell').on('click', handleClick);
 };
 
+function restartGame() {
+    $('#restartGame').on('click', clear_game);
+}
 
 $(function(){
 	init();
+	restartGame();
 });
