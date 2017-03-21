@@ -96,18 +96,23 @@ function cpu_move(){
     console.log('kill all humans');
 
     if(is_danger()){
-        var dangerCells = win_recipie[i];
+
+        var dangerCells = win_recipie[i].join(',');
 		console.log('danger cells are:', dangerCells);
         var SpotToPlay = $(dangerCells);
-		var blockWin = (SpotToPlay.indexOf('empty'));
+		console.log(SpotToPlay);
 
-        $(SpotToPlay[blockWin]).trigger('click', [true]);
-        console.log('the cell to block is:', blockWin);
+		var goingCrazy = (SpotToPlay.filter('.empty'));
 
+		console.log(goingCrazy);
+
+        $(goingCrazy).trigger('click', [true]);
+        console.log('the cell to block is:', goingCrazy );
 	}
 
 	else{
 		var availableCells = $('#map').find('.empty');
+
     var random_cell = Math.floor((Math.random() * availableCells.length));
     $(availableCells[random_cell]).trigger('click', [true]);
 	};
