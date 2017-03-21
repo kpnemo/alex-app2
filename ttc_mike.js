@@ -15,6 +15,7 @@ var win_recipie = [
 	['#cell_3', '#cell_5', '#cell_7']
 ];
 
+
 function is_winner(){
 	var we_have_a_winner = false;
 
@@ -49,6 +50,7 @@ function _game_over(){
 	var title = $('#myModal .modal-title');
 	var body = $('#myModal .modal-body');
 
+
 	var _clonedMap = $('#map').clone();
 	_clonedMap.find('.cell').off('click');
 	body.html(_clonedMap);
@@ -59,6 +61,8 @@ function _game_over(){
 	$('#myModal').on('hide.bs.modal', function(){
 		$('#myModal .modal-body').empty();
 		clear_game();
+        recordScore();
+
 	});
 }
 
@@ -104,6 +108,30 @@ function handleClick(ev, isCPUEvent){
 	}
 };
 
+	var playerScore = 0;
+	var computerScore = 0;
+	var playerRecord = $('#myScore span');
+	var computerRecord = $('#yourScore span');
+
+function recordScore (){
+
+    if(last_move == 'human'){
+        playerScore ++;
+        console.log('player wins :', playerScore);
+    } else {
+        computerScore ++;
+        console.log('computer wins :', computerScore);
+    }
+
+
+		playerRecord.text(playerScore);
+		computerRecord.text(computerScore);
+}
+
+
+
+
+
 function init(){
 	$('.cell').on('click', handleClick);
 };
@@ -116,3 +144,7 @@ $(function(){
 	init();
 	restartGame();
 });
+
+
+
+
