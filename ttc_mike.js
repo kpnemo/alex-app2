@@ -17,6 +17,7 @@ var win_recipie = [
 
 
 function is_winner(){
+
 	var we_have_a_winner = false;
 
 	for(i=0; i<win_recipie.length; i++){
@@ -27,35 +28,18 @@ function is_winner(){
 		we_have_a_winner = _isWinnerRow;
 		if(_isWinnerRow) break;
 	}
-
 	console.log('win have a winner', we_have_a_winner);
+
+
 
 	if(we_have_a_winner){
 		return true;
 	} else {
 		return false;
 	}
-};
 
-function is_danger(){
-    var we_have_danger = false;
 
-    for(i=0; i<win_recipie.length; i++){
-        var _dangerString = win_recipie[i].join(',');
-        var _elDanger = $(_dangerString);
 
-        var _isDangerRow = ((_elDanger.filter('.X').length == 2));
-        we_have_danger = _isDangerRow;
-        if(_isDangerRow) break;
-    }
-
-    console.log('we are in danger');
-
-    if(we_have_danger){
-        return true;
-    } else {
-        return false;
-    }
 
 };
 
@@ -89,7 +73,31 @@ function _game_over(){
 	});
 }
 
+function is_danger() {
+    var we_have_danger = false;
+
+    for (i = 0; i < win_recipie.length; i++) {
+        var _dangerString = win_recipie[i].join(',');
+        var _elDanger = $(_dangerString);
+
+        var _isDangerRow = ((_elDanger.filter('.X').length == 2));
+        we_have_danger = _isDangerRow;
+        if (_isDangerRow) break;
+    }
+   
+    console.log(win_recipie[i]);
+    console.log('we are in danger');
+
+    if (we_have_danger) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 function cpu_move(){
+
+    	is_danger();
 	console.log('kill all humans');
 	var availableCells = $('#map').find('.empty');
 	var random_cell = Math.floor((Math.random() * availableCells.length));
