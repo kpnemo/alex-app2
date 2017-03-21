@@ -76,7 +76,7 @@ function _game_over(){
 function is_danger() {
     var we_have_danger = false;
 
-    for (i = 0; i < win_recipie.length; i++) {
+	for (i = 0; i < win_recipie.length; i++) {
         var _dangerString = win_recipie[i].join(',');
         var _elDanger = $(_dangerString);
 
@@ -84,9 +84,6 @@ function is_danger() {
         we_have_danger = _isDangerRow;
         if (_isDangerRow) break;
     }
-   
-    console.log(win_recipie[i]);
-    console.log('we are in danger');
 
     if (we_have_danger) {
         return true;
@@ -96,13 +93,25 @@ function is_danger() {
 };
 
 function cpu_move(){
+    console.log('kill all humans');
 
-    	is_danger();
-	console.log('kill all humans');
-	var availableCells = $('#map').find('.empty');
-	var random_cell = Math.floor((Math.random() * availableCells.length));
+    if(is_danger()){
+        var dangerCells = win_recipie[i];
+		console.log('danger cells are:', dangerCells);
+        var SpotToPlay = $(dangerCells);
+		var blockWin = (SpotToPlay.indexOf('empty'));
 
-	$(availableCells[random_cell]).trigger('click', [true]);
+        $(SpotToPlay[blockWin]).trigger('click', [true]);
+        console.log('the cell to block is:', blockWin);
+
+	}
+
+	else{
+		var availableCells = $('#map').find('.empty');
+    var random_cell = Math.floor((Math.random() * availableCells.length));
+    $(availableCells[random_cell]).trigger('click', [true]);
+	};
+
 };
 
 function is_click_valid(el){
