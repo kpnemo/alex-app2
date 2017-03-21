@@ -37,6 +37,28 @@ function is_winner(){
 	}
 };
 
+function is_danger(){
+    var we_have_danger = false;
+
+    for(i=0; i<win_recipie.length; i++){
+        var _dangerString = win_recipie[i].join(',');
+        var _elDanger = $(_dangerString);
+
+        var _isDangerRow = ((_elDanger.filter('.X').length == 2));
+        we_have_danger = _isDangerRow;
+        if(_isDangerRow) break;
+    }
+
+    console.log('we are in danger');
+
+    if(we_have_danger){
+        return true;
+    } else {
+        return false;
+    }
+
+};
+
 function clear_game(){
 	var map = $('#map');
 	map.find('.cell').each(function(index){
