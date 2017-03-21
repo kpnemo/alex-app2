@@ -46,8 +46,9 @@ function clear_game(){
 
 function _game_over(){
 	console.log('game over');
+    recordScore();
 
-	var title = $('#myModal .modal-title');
+    var title = $('#myModal .modal-title');
 	var body = $('#myModal .modal-body');
 
 
@@ -61,7 +62,7 @@ function _game_over(){
 	$('#myModal').on('hide.bs.modal', function(){
 		$('#myModal .modal-body').empty();
 		clear_game();
-        recordScore();
+
 
 	});
 }
@@ -126,7 +127,7 @@ function recordScore (){
 
 		playerRecord.text(playerScore);
 		computerRecord.text(computerScore);
-}
+};
 
 
 
@@ -138,7 +139,7 @@ function init(){
 
 function restartGame() {
     $('#restartGame').on('click', clear_game);
-}
+};
 
 $(function(){
 	init();
