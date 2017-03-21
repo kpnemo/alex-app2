@@ -15,6 +15,10 @@ var win_recipie = [
 	['#cell_3', '#cell_5', '#cell_7']
 ];
 
+var playerScore = 0;
+var computerScore = 0;
+var playerRecord = $('#myScore span');
+var computerRecord = $('#yourScore span');
 
 function is_winner(){
 
@@ -75,46 +79,50 @@ function _game_over(){
 
 function is_danger() {
     var we_have_danger = false;
+    var hit = null;
 
 	for (i = 0; i < win_recipie.length; i++) {
+		console.log('i am inside loop', i);
+
         var _dangerString = win_recipie[i].join(',');
         var _elDanger = $(_dangerString);
 
-        var _isDangerRow = ((_elDanger.filter('.X').length == 2));
+        var _isDangerRow = ((_elDanger.filter('.X').length == 2) && _elDanger.filter('.empty').length > 0);
         we_have_danger = _isDangerRow;
-        if (_isDangerRow) break;
+        if (_isDangerRow) {
+        	hit = i;
+        	break;
+        }
     }
 
-    if (we_have_danger) {
-        return true;
-    } else {
-        return false;
-    }
+    return {is_danger: we_have_danger, hit: hit};
 };
 
 function cpu_move(){
     console.log('kill all humans');
+	var _is_danger = is_danger();
 
-    if(is_danger()){
+    if(_is_danger.is_danger){
+    	console.log('i am inside danger');
 
-        var dangerCells = win_recipie[i].join(',');
+        var dangerCells = win_recipie[_is_danger.hit].join(',');
 		console.log('danger cells are:', dangerCells);
         var SpotToPlay = $(dangerCells);
 		console.log(SpotToPlay);
 
-		var goingCrazy = (SpotToPlay.filter('.empty'));
+		var goingCrazy = (SpotToPlay.filter('.empty')).eq(0);
 
 		console.log(goingCrazy);
 
-        $(goingCrazy).trigger('click', [true]);
+        goingCrazy.trigger('click', [true]);
         console.log('the cell to block is:', goingCrazy );
 	}
 
 	else{
 		var availableCells = $('#map').find('.empty');
 
-    var random_cell = Math.floor((Math.random() * availableCells.length));
-    $(availableCells[random_cell]).trigger('click', [true]);
+        var random_cell = Math.floor((Math.random() * availableCells.length));
+        $(availableCells[random_cell]).trigger('click', [true]);
 	};
 
 };
@@ -153,11 +161,6 @@ function handleClick(ev, isCPUEvent){
 	}
 };
 
-	var playerScore = 0;
-	var computerScore = 0;
-	var playerRecord = $('#myScore span');
-	var computerRecord = $('#yourScore span');
-
 function recordScore (){
 
     if(last_move == 'human'){
@@ -173,16 +176,15 @@ function recordScore (){
 		computerRecord.text(computerScore);
 };
 
+function restartGame() {
+	$('#restartGame').on('click', clear_game);
+};
 
 
 
 
 function init(){
 	$('.cell').on('click', handleClick);
-};
-
-function restartGame() {
-    $('#restartGame').on('click', clear_game);
 };
 
 $(function(){
